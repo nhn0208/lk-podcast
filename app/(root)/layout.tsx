@@ -1,3 +1,4 @@
+import LeftSidebar from "@/components/LeftSidebar";
 
 export default function RootLayout({
   children,
@@ -7,7 +8,7 @@ export default function RootLayout({
   return (
     <div>
         <main>
-            LEFT SIDEBAR
+            <LeftSidebar/>
             {children}
             RIGHT SIDEBAR
         </main>
