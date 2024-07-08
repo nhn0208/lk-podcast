@@ -56,7 +56,7 @@ const LeftSidebar = () => {
                     Log Out
                 </Button>
             </div>
-        </SignedIn>v
+        </SignedIn>
     </div>
   )
 }

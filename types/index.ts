@@ -89,6 +89,7 @@ export interface AudioProps {
   title: string;
   audioUrl: string;
   author: string;
+  authorId: string;
   imageUrl: string;
   podcastId: string;
 }

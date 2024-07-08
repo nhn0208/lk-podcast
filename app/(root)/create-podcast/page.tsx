@@ -15,15 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { Textarea } from "@/components/ui/textarea"
 import { Loader } from "lucide-react"
@@ -34,8 +25,6 @@ import { api } from "@/convex/_generated/api"
 import { useRouter } from "next/navigation"
 import GenerateAudio from "@/components/GenerateAudio"
 import GenerateThumbnail from "@/components/GenerateThumbnail"
-
-const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx'];
 
 const formSchema = z.object({
   podcastTitle: z.string().min(2),

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { api } from "@/convex/_generated/api";
-import { useAudio } from "@/app/providers/AudioProvider";
+import { useAudio } from "@/providers/AudioProvider";
 import { PodcastDetailPlayerProps } from "@/types";
 
 import LoaderSpinner from "./LoaderSpinner";
@@ -52,6 +52,7 @@ const PodcastDetailPlayer = ({
       audioUrl,
       imageUrl,
       author,
+      authorId,
       podcastId,
     });
   };
