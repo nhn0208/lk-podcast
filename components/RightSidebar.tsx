@@ -52,7 +52,7 @@ const RightSidebar = () => {
       <section className="flex flex-col gap-8 pt-12">
         <div className="flex flex-col gap-6">
           {topPodcasters?.slice(0, 3).map((podcaster) => (
-            <div key={podcaster._id} className="flex cursor-pointer justify-between" onClick={() => router.push(`/profile/${podcaster._id}`)}>
+            <div key={podcaster._id} className="flex cursor-pointer justify-between" onClick={() => router.push(`/profile/${podcaster.clerkId}`)}>
               <figure className="flex items-center gap-2">
                 <Image
                   src={podcaster.imageUrl}
