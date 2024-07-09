@@ -1,5 +1,5 @@
 "use client";
-import { useMutation } from "convex/react";
+import { useAction, useMutation } from "convex/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -11,6 +11,7 @@ import { PodcastDetailPlayerProps } from "@/types";
 import LoaderSpinner from "./LoaderSpinner";
 import { Button } from "./ui/button";
 import { useToast } from "./ui/use-toast";
+import { useUser } from "@clerk/nextjs";
 
 const PodcastDetailPlayer = ({
   audioUrl,
@@ -24,11 +25,13 @@ const PodcastDetailPlayer = ({
   authorImageUrl,
   authorId,
 }: PodcastDetailPlayerProps) => {
+  const { user } = useUser()
   const router = useRouter();
   const { setAudio } = useAudio();
   const { toast } = useToast();
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePodcast = useMutation(api.podcasts.deletePodcast);
+  const updatePodcastView = useMutation(api.podcasts.updatePodcastViews)
 
   const handleDelete = async () => {
     try {
@@ -55,6 +58,7 @@ const PodcastDetailPlayer = ({
       authorId,
       podcastId,
     });
+    updatePodcastView({ podcastId, userId: user?.id || ''})
   };
 
   if (!imageUrl || !authorImageUrl) return <LoaderSpinner />;

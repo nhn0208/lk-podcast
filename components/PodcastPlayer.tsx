@@ -13,7 +13,7 @@ const PodcastPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(1);
   const { audio } = useAudio();
 
   const togglePlayPause = () => {

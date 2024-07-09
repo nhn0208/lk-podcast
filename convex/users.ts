@@ -33,7 +33,7 @@ export const getTopUserByPodcastCount = query({
           .filter((q) => q.eq(q.field("authorId"), u.clerkId))
           .collect();
 
-        const sortedPodcasts = podcasts.sort((a, b) => b.views - a.views);
+        const sortedPodcasts = podcasts.sort((a, b) => b.views.length - a.views.length);
 
         return {
           ...u,

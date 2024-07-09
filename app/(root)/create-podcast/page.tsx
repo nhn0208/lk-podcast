@@ -72,7 +72,7 @@ const CreatePodcast = () => {
         podcastDescription: data.podcastDescription,
         audioUrl,
         imageUrl,
-        views: 0,
+        views: [],
         audioDuration,
         audioStorageId: audioStorageId!,
         imageStorageId: imageStorageId!,

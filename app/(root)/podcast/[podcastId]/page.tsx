@@ -38,7 +38,7 @@ const PodcastDetails = (
             height={24}
             alt="headphone"
           />
-          <h2 className="text-16 font-bold text-white-1">{podcast?.views}</h2>
+          <h2 className="text-16 font-bold text-white-1">{podcast?.views.length}</h2>
         </figure>
       </header>
 

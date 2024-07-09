@@ -18,7 +18,7 @@ const RightSidebar = () => {
   const router = useRouter();
 
   const { audio } = useAudio();
-  console.log(audio);
+  //console.log(audio);
   
 
   return (

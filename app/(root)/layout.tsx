@@ -2,6 +2,8 @@ import LeftSidebar from "@/components/LeftSidebar";
 import MobileNav from "@/components/MobileNav";
 import PodcastPlayer from "@/components/PodcastPlayer";
 import RightSidebar from "@/components/RightSidebar";
+import Toaster from "@/components/Toaster";
+import User from "@/components/User";
 import Image from "next/image";
 
 export default function RootLayout({
@@ -20,7 +22,10 @@ export default function RootLayout({
                   <MobileNav />
                 </div>
                 <div>
-                  Toaster (notification popups)
+                  <div className="w-full flex justify-end p-4 gap-2">
+                    <Toaster/>
+                    <User/>
+                  </div>
                   {children}
                 </div>
               </div>

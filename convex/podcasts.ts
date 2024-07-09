@@ -11,7 +11,7 @@ export const createPodcast = mutation({
     audioUrl: v.string(),
     imageUrl: v.string(),
     imageStorageId: v.id("_storage"),
-    views: v.number(),
+    views: v.array(v.string()),
     audioDuration: v.number(),
   },
   handler: async (ctx, args) => {
@@ -79,7 +79,7 @@ export const getTrendingPodcasts = query({
   handler: async (ctx) => {
     const podcast = await ctx.db.query("podcasts").collect();
 
-    return podcast.sort((a, b) => b.views - a.views).slice(0, 8);
+    return podcast.sort((a, b) => b.views.length - a.views.length).slice(0, 8);
   },
 });
 
@@ -95,7 +95,7 @@ export const getPodcastByAuthorId = query({
       .collect();
 
     const totalListeners = podcasts.reduce(
-      (sum, podcast) => sum + podcast.views,
+      (sum, podcast) => sum + podcast.views.length,
       0
     );
 
@@ -146,6 +146,7 @@ export const getPodcastBySearch = query({
 export const updatePodcastViews = mutation({
   args: {
     podcastId: v.id("podcasts"),
+    userId: v.string()
   },
   handler: async (ctx, args) => {
     const podcast = await ctx.db.get(args.podcastId);
@@ -154,8 +155,12 @@ export const updatePodcastViews = mutation({
       throw new ConvexError("Podcast not found");
     }
 
+    if ( !podcast.views.includes(args.userId) ) {
+      podcast.views.push(args.userId)
+    }
+
     return await ctx.db.patch(args.podcastId, {
-      views: podcast.views + 1,
+      views: podcast.views
     });
   },
 });

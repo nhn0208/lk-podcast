@@ -14,7 +14,7 @@ export default defineSchema({
     authorId: v.string(),
     authorImageUrl: v.string(),
     audioDuration: v.number(),
-    views: v.number(),
+    views: v.array(v.string()),
   })
     .searchIndex('search_author', { searchField: 'author' })
     .searchIndex('search_title', { searchField: 'podcastTitle' })
